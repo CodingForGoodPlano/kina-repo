@@ -69,13 +69,85 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     }
   });
 
-  $scope.$watch('opt.subsidizedPerc', function() {
-    if($scope.opt.subsidizedPerc <= 100 && $scope.opt.subsidizedPerc>=0)  {
-      var totalArr = calcTotal("UTA", $scope.opt.subsidizedPerc/100, 800);
+ $scope.$watch('opt.carPrice', function() {
+
+    console.log('caryear');
+
+    var yearArr = new Array();
+    var carArr = new Array();
+
+
+
+    yearArr.push('x');
+    carArr.push('Car Loan');
+    for(var i = 2014; i < $scope.opt.carYear; i++ ) {
+      yearArr.push(i);
+      carArr.push(0);
+    }
+    yearArr.push($scope.opt.carYear);
+    yearArr.push($scope.opt.carYear +1);
+    yearArr.push($scope.opt.carYear + 2);
+    yearArr.push($scope.opt.carYear +3);
+    yearArr.push($scope.opt.carYear +4);
+
+    carArr.push($scope.opt.carPrice);
+    carArr.push($scope.opt.carPrice * 3/4);
+    carArr.push($scope.opt.carPrice/2);
+    carArr.push($scope.opt.carPrice/4);
+    carArr.push(0);
+
+    $scope.chart.load({
+      columns: [
+      yearArr,
+      carArr
+        //  ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
+        ]
+      });
+
+  });
+
+  $scope.$watch('opt.carYear', function() {
+
+    console.log('caryear');
+
+    var yearArr = new Array();
+    var carArr = new Array();
+
+    yearArr.push('x');
+    carArr.push('Car Loan');
+    for(var i = 2014; i < $scope.opt.carYear; i++ ) {
+      yearArr.push(i);
+      carArr.push(0);
+    }
+    yearArr.push($scope.opt.carYear);
+    yearArr.push($scope.opt.carYear +1);
+    yearArr.push($scope.opt.carYear + 2);
+    yearArr.push($scope.opt.carYear +3);
+    yearArr.push($scope.opt.carYear +4);
+
+    carArr.push($scope.opt.carPrice);
+    carArr.push($scope.opt.carPrice * 3/4);
+    carArr.push($scope.opt.carPrice/2);
+    carArr.push($scope.opt.carPrice/4);
+    carArr.push(0);
+
+    $scope.chart.load({
+      columns: [
+      yearArr,
+      carArr
+        //  ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
+        ]
+      });
+
+  });
+
+  $scope.$watch('opt.loanPayment', function() {
+   if($scope.opt.subsidizedPerc <= 100 && $scope.opt.subsidizedPerc>=0 && $scope.opt.loanPayment > 500)  {
+      var totalArr = calcTotal("UTA", $scope.opt.subsidizedPerc/100, $scope.opt.loanPayment);
       var returnArr = new Array();
       var yearArr = new Array();
       yearArr.push('x');
-      returnArr.push('data2');
+      returnArr.push('Loan Debt');
      // console.log(totalArr);
      for(var i = 0; i < totalArr.length; i ++)  {
       yearArr.push(2014+i);
@@ -92,6 +164,29 @@ angular.module('app', ['ngRoute', 'frontendServices'])
   }
 }, true);
 
+  
+  $scope.$watch('opt.subsidizedPerc', function() {
+    if($scope.opt.subsidizedPerc <= 100 && $scope.opt.subsidizedPerc>=0 && $scope.opt.loanPayment> 500)  {
+      var totalArr = calcTotal("UTA", $scope.opt.subsidizedPerc/100, $scope.opt.loanPayment);
+      var returnArr = new Array();
+      var yearArr = new Array();
+      yearArr.push('x');
+      returnArr.push('Loan Debt');
+     // console.log(totalArr);
+     for(var i = 0; i < totalArr.length; i ++)  {
+      yearArr.push(2014+i);
+      returnArr.push(totalArr[i].toFixed(2));
+    }
+    console.log(returnArr);
+    $scope.chart.load({
+      columns: [
+      yearArr,
+      returnArr,
+        //  ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
+        ]
+      });
+  }
+}, true);
   $scope.showHideAddOpt = function() {
     if ($scope.showAddOpt) {
       $scope.showAddOpt = '';
