@@ -14,9 +14,9 @@ angular.module('app', ['ngRoute'])
     templateUrl: 'dashboard.html',
     controller: 'DashboardCtrl'
   })
-		.when('/college-flow', {
-			templateUrl: 'college-flow.html',
-			controller: 'CollegeFlowCtrl'
+		.when('/pathflow', {
+			templateUrl: 'pathflow.html',
+			controller: 'PathFlowCtrl'
 		})
 	.otherwise({
 		redirectTo: '/main'
@@ -52,6 +52,6 @@ angular.module('app', ['ngRoute'])
     }
   });
 }])
-.controller('CollegeFlowCtrl', ['$scope', function($scope) {
+.controller('PathFlowCtrl', ['$scope', function($scope) {
 
 	}]);
