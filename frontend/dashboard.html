@@ -2,6 +2,7 @@
   <div class="row">
     <div id="dashboard_chart"></div>
   </div>
+  <div class="col-md-10">
   <div class="col-offset-md-2 col-sm-3 col-md-3">
     <div class="col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-5">
       <select ng-model="addOpt" ng-options="opt for opt in opts">
@@ -12,8 +13,17 @@
 
   <div class="col-sm-5 col-md-4" ng-switch on="addOpt">
     <div ng-switch-when="loans" class="well wells">
-      <span class="inline">Subsidized</span><input type="text" ng-model="opt.subsidizedPerc"><input class="inline" type="range" ng-model="opt.subsidizedPerc" min="0" max="100", step="1"> <span class="inline">Unsubsidized</span>
-      
+      <span class="inline">Subsidized</span>
+      <input type="text" ng-model="opt.subsidizedPerc">
+      <div class="spacer5"></div>
+      <input class="inline" type="range" ng-model="opt.subsidizedPerc" min="0" max="100", step="1">
+      <div class="spacer5"></div>
+      <span class="inline">Unsubsidized</span>
+      <div class="spacer15"></div>
+      <div class="row">
+      <div class="col-md-1">Monthly Payment</div>
+      <div class="col-md-5"><input type="text" ng-model="opt.loanPayment"
+      </div></div>      
     </div>
 
     <div ng-switch-when="car" class="well wells">
@@ -30,7 +40,8 @@
       </div>
     </div>
 
-    <div class="row" ng-switch-when="college">
-    </div>
   </div>
+  </div>
+
+  <div class="col-md-2 pull-right"><a href="#/pathflow"><button type="submit" class="btn btn-primary pull-right">Change major</button></div>
 </div>
