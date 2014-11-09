@@ -63,7 +63,7 @@ angular.module('app', ['ngRoute', 'frontendServices'])
    // console.log(totalArr);
     for(var i = 0; i < totalArr.length; i ++)  {
       yearArr.push(2014+i);
-      returnArr.push(totalArr[i]);
+      returnArr.push(totalArr[i].toFixed(2));
     }
     console.log(returnArr);
     $scope.chart.load({
