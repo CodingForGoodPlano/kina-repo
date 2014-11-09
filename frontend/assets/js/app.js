@@ -18,6 +18,9 @@ angular.module('app', ['ngRoute'])
 			templateUrl: 'pathflow.html',
 			controller: 'PathFlowCtrl'
 		})
+    .when('/about', {
+      templateUrl: 'about.html',
+    })
 	.otherwise({
 		redirectTo: '/main'
 	});
