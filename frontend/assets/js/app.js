@@ -70,7 +70,8 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     $scope.showAddOpt = !$scope.showAddOpt;
   }
 }])
-.controller('PathFlowCtrl', ['$scope','College', function($scope, College) {
-      $scope.colleges = College.query();
+.controller('PathFlowCtrl', ['$scope','Major', 'College', function($scope, Major, College) {
+      $scope.majors = Major.query();
       $scope.orderProp = 'Total';
+      $scope.colleges = College.query();
 }]);
