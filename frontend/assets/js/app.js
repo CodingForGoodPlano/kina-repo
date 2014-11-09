@@ -14,6 +14,10 @@ angular.module('app', ['ngRoute'])
     templateUrl: 'dashboard.html',
     controller: 'DashboardCtrl'
   })
+  .when('/college-flow', {
+    templateUrl: 'college-flow.html',
+    controller: 'CollegeFlowCtrl'
+  })
 	.otherwise({
 		redirectTo: '/main'
 	});
@@ -22,7 +26,9 @@ angular.module('app', ['ngRoute'])
 
 }])
 .controller('RegisterCtrl', ['$scope', function($scope) {
-
+  $(document).ready(function() {
+    $('#registrationForm').bootstrapValidator();
+  });
 }])
 .controller('DashboardCtrl', ['$scope', function($scope) {
   var chart = c3.generate({
@@ -47,4 +53,7 @@ angular.module('app', ['ngRoute'])
       }
     }
   });
+}])
+.controller('CollegeFlowCtrl', ['$scope', function($scope) {
+
 }]);
