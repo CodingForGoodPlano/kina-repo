@@ -42,7 +42,29 @@ angular.module('app', ['ngRoute', 'frontendServices'])
   for (var i = 2014; i < 2030; i++) {
     $scope.carYears.push(i);
   }
-  $scope.majors=['Computer Science', 'Accounting'];
+  $scope.majors=[
+    'Petroleum Engineering',
+    'Liberal Arts',
+    'Mathematics',
+    'Electrical Engineering',
+    'Economics',
+    'Computer Science',
+    'Business Administration',
+    'Biology',
+    'Art',
+    'Accounting'
+  ];
+  $scope.opt.salaries = []
+  $scope.opt.salaries["Petroleum Engineering"] = [103000, 160000, 215200];        
+  $scope.opt.salaries["Liberal Arts"] = [36600, 60500, 60700];        
+  $scope.opt.salaries["Mathematics"] = [49400, 88000, 143570];        
+  $scope.opt.salaries["Electrical Engineering"] = [64300, 106000, 131200];        
+  $scope.opt.salaries["Economics"] = [50100, 96700, 154150];        
+  $scope.opt.salaries["Computer Science"] = [59800, 102000, 134100];        
+  $scope.opt.salaries["Business Administration"] = [43500, 71000, 121000];        
+  $scope.opt.salaries["Biology"] = [40200, 70800, 163000];        
+  $scope.opt.salaries["Art"] = [36100, 57100, 71240];
+  $scope.opt.salaries["Accounting"] = [45300, 74900, 125100];
 
 
   $scope.chart = c3.generate({
@@ -98,6 +120,18 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     }
     $scope.showAddOpt = !$scope.showAddOpt;
   }
+
+  $scope.$watch('opt.major', function() {
+    if ($scope.opt.major !== undefined) {
+    var arr = ['salary: ' + $scope.opt.major, 0, 0, 0];
+    arr.push.apply(arr, $scope.opt.salaries[$scope.opt.major]);
+    $scope.chart.load({
+      columns: [
+        arr
+      ]
+    });
+  }
+  })
 }])
 .controller('CollegeFlowCtrl', ['$scope', function($scope) {
 }])
@@ -109,15 +143,15 @@ angular.module('app', ['ngRoute', 'frontendServices'])
   $scope.collegeSelected = false;
   $scope.majorSelected = false;
 
-  $scope.universityClick = function(college){
+  $scope.universityClick = function(collegeId){
     $scope.collegeSelected = true;
-    $scope.myCollege = college;
-  };
+    $scope.myCollege = collegeId;
+  }
 
   $scope.majorClick = function(majorId){
     $scope.majorSelected = true;
     $scope.myMajor = majorId;
-  };
+  }
 
 
 }]);
