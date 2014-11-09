@@ -242,7 +242,7 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     var total = 0;
         var majorPercentage = 0;
 
-  $scope.universityClick = function(collegeId){
+  $scope.universityClick = function(college){
     $scope.collegeSelected = true;
     $scope.myCollege = college;
       total = $scope.myCollege.Total;
