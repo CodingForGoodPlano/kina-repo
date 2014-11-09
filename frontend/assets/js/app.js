@@ -102,15 +102,15 @@ angular.module('app', ['ngRoute', 'frontendServices'])
   $scope.collegeSelected = false;
   $scope.majorSelected = false;
 
-  $scope.universityClick = function(collegeId){
+  $scope.universityClick = function(college){
     $scope.collegeSelected = true;
-    $scope.myCollege = collegeId;
-  }
+    $scope.myCollege = college;
+  };
 
   $scope.majorClick = function(majorId){
     $scope.majorSelected = true;
     $scope.myMajor = majorId;
-  }
+  };
 
 
 }]);
