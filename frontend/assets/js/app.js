@@ -14,13 +14,16 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     templateUrl: 'dashboard.html',
     controller: 'DashboardCtrl'
   })
-		.when('/pathflow', {
-			templateUrl: 'pathflow.html',
-			controller: 'PathFlowCtrl'
-		})
-	.otherwise({
-		redirectTo: '/main'
-	});
+  .when('/pathflow', {
+   templateUrl: 'pathflow.html',
+   controller: 'PathFlowCtrl'
+ })
+  .when('/about', {
+    templateUrl: 'about.html',
+  })
+  .otherwise({
+    redirectTo: '/main'
+  });
 }])
 .controller('MainCtrl', ['$scope', function($scope) {
 
@@ -41,13 +44,13 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     data: {
       x: 'x',
       columns: [
-        ['x', '2014', '2015', '2016', '2017', '2018', '2019'],
+      ['x', '2014', '2015', '2016', '2017', '2018', '2019'],
        // ['data1', 80000 200, 100, 400, 150, 250],
        // ['data2', 50, 20, 10, 40, 15, 25],
        // ['data3', 50]
-      ]
-    },
-    axis: {
+       ]
+     },
+     axis: {
       x: {
         show: true
       }
@@ -61,19 +64,19 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     yearArr.push('x');
     returnArr.push('data2');
    // console.log(totalArr);
-    for(var i = 0; i < totalArr.length; i ++)  {
-      yearArr.push(2014+i);
-      returnArr.push(totalArr[i].toFixed(2));
-    }
-    console.log(returnArr);
-    $scope.chart.load({
-      columns: [
-      yearArr,
-        returnArr,
+   for(var i = 0; i < totalArr.length; i ++)  {
+    yearArr.push(2014+i);
+    returnArr.push(totalArr[i].toFixed(2));
+  }
+  console.log(returnArr);
+  $scope.chart.load({
+    columns: [
+    yearArr,
+    returnArr,
       //  ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
       ]
     });
-  }, true);
+}, true);
 
   $scope.showHideAddOpt = function() {
     if ($scope.showAddOpt) {
@@ -86,19 +89,19 @@ angular.module('app', ['ngRoute', 'frontendServices'])
 }])
 
 .controller('PathFlowCtrl', ['$scope','Major', 'College', function($scope, Major, College) {
-      $scope.majors = Major.query();
-      $scope.orderProp = 'Total';
-      $scope.colleges = College.query();
-      $scope.collegeSelected = false;
-      $scope.majorSelected = false;
+  $scope.majors = Major.query();
+  $scope.orderProp = 'Total';
+  $scope.colleges = College.query();
+  $scope.collegeSelected = false;
+  $scope.majorSelected = false;
 
-      $scope.universityClick = function(College){
-        $scope.collegeSelected = true;
-        $scope.myCollege = College;
-      }
+  $scope.universityClick = function(College){
+    $scope.collegeSelected = true;
+    $scope.myCollege = College;
+  }
 
-      $scope.majorClick = function(Major){
-        $scope.majorSelected = true;
-        $scope.myMajor = Major;
-      }
+  $scope.majorClick = function(Major){
+    $scope.majorSelected = true;
+    $scope.myMajor = Major;
+  }
 }]);
