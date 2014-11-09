@@ -8,3 +8,4 @@
 .idea/modules.xml
 .idea/vcs.xml
 node_modules/protractor/testapp/favicon.ico
+.idea/misc.xml
