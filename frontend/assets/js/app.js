@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ngRoute', 'frontendServices'])
+angular.module('app', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/main', {
 		templateUrl: 'main.html',
@@ -14,13 +14,10 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     templateUrl: 'dashboard.html',
     controller: 'DashboardCtrl'
   })
-		.when('/pathflow', {
-			templateUrl: 'pathflow.html',
-			controller: 'PathFlowCtrl'
+		.when('/college-flow', {
+			templateUrl: 'college-flow.html',
+			controller: 'CollegeFlowCtrl'
 		})
-    .when('/about', {
-      templateUrl: 'about.html'
-    })
 	.otherwise({
 		redirectTo: '/main'
 	});
@@ -32,7 +29,9 @@ angular.module('app', ['ngRoute', 'frontendServices'])
 
 }])
 .controller('DashboardCtrl', ['$scope', function($scope) {
-  $scope.subsidizedPerc = 50;
+  $scope.opt = {
+    subsidizedPerc: 50
+  }
   $scope.showAddOpt = false;
   $scope.opts = ['loans', 'college', 'car'];
 
@@ -55,10 +54,10 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     }
   });
 
-  $scope.$watch('subsidizedPerc', function() {
+  $scope.$watch('opt.subsidizedPerc', function() {
     $scope.chart.load({
       columns: [
-        ['data3', $scope.subsidizedPerc, $scope.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
+        ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
       ]
     });
   }, true);
@@ -70,7 +69,6 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     $scope.showAddOpt = !$scope.showAddOpt;
   }
 }])
-.controller('PathFlowCtrl', ['$scope','College', function($scope, College) {
-      $scope.colleges = College.query();
-      $scope.orderProp = 'Total';
+.controller('CollegeFlowCtrl', ['$scope', function($scope) {
+
 }]);

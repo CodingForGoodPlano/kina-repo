@@ -1,4 +1,4 @@
-<!-- <div class="row" ng-controller="DashboardCtrl as ctrl"> -->
+<div class="row" ng-controller="DashboardCtrl as ctrl"> -->
 <div class="row">
   <div id="dashboard_chart"></div>
 </div>
@@ -21,8 +21,8 @@
   </div>  -->
 
   <div class="row" ng-switch-when="loans">
-Subsidized <input type="range" ng-model="subsidizedPerc" min="0" max="100", step="1"> Unsubsidized
-  <input type="text" ng-model="subsidizedPerc">
+Subsidized <input type="range" ng-model="opt.subsidizedPerc" min="0" max="100", step="1"> Unsubsidized
+  <input type="text" ng-model="opt.subsidizedPerc">
   </div>
 
   <div class="row" ng-switch-when="car">
