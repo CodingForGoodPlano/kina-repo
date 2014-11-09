@@ -5,10 +5,11 @@
         <div class="input-group input-group-lg">
             <div class="input-group-addon"><span class="glyphicon glyphicon-book"></span></div>
             <input class="input-lg form-control" type="text" ng-model="collegesearch" placeholder="Enter a college name here">
-            <ul class="list-unstyled">
-                <li ng-repeat="college in colleges.results | filter:collegesearch"><a ng-click="universityClick(college )" >{{ college.University }}</a></li>
-            </ul>
+
         </div>
+        <ul class="list-unstyled">
+            <li ng-repeat="college in colleges.results | filter:collegesearch"><a ng-click="universityClick(college )" >{{ college.University }}</a></li>
+        </ul>
         <br/>
         <br />
         <button class="btn-lg btn-default">Go</button>
@@ -24,8 +25,6 @@
     <div class="col-md-6" ng-show="majorSelected">
         <h3>See it in action</h3>
         <p>Your chosen combination will, on average, give you the following financial status: </p>
-        <p ng-repeat="college in colleges.results | filter:myCollege | limitTo: 1">{{ college.Total }}</p>
-        <p ng-repeat="major in majors.results | filter:myMajor | limitTo: 1">{{ major.StartingSalary }}</p>
         <div id="college-major-chart"><!-- chart goes here --></div>
         <a class="btn btn-success btn-lg" href="#/dashboard">Go to my dashboard</a>
     </div>

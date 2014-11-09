@@ -109,11 +109,19 @@ angular.module('app', ['ngRoute', 'frontendServices'])
   $scope.collegeSelected = false;
   $scope.majorSelected = false;
     var total = 0;
+        var majorPercentage = 0;
 
   $scope.universityClick = function(college){
     $scope.collegeSelected = true;
     $scope.myCollege = college;
       total = $scope.myCollege.Total;
+
+  };
+
+  $scope.majorClick = function(major){
+    $scope.majorSelected = true;
+    $scope.myMajor = major;
+      majorPercentage = ($scope.myMajor.StartingSalary / 12) * .25;
       $scope.chart = c3.generate({
           bindto: '#college-major-chart',
           data: {
@@ -132,7 +140,7 @@ angular.module('app', ['ngRoute', 'frontendServices'])
           }
       });
 
-      var totalArr = calcTotalParse(total,.045, 800);
+      var totalArr = calcTotalParse(total,.045, majorPercentage);
       var returnArr = new Array();
       var yearArr = new Array();
       yearArr.push('x');
@@ -150,11 +158,7 @@ angular.module('app', ['ngRoute', 'frontendServices'])
               //  ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
           ]
       });
-  };
 
-  $scope.majorClick = function(major){
-    $scope.majorSelected = true;
-    $scope.myMajor = major;
   };
 
 
