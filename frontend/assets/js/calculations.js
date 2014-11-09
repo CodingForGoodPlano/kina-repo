@@ -69,6 +69,17 @@ function calcTotal(school, percentSub, monthly)	{
 	return total;
 }
 
+function calcTotalParse(total, percentSub, monthly)	{
+
+	var principal = total;
+	var unsub = calcUnsub((principal * (1-percentSub)));
+	var total = yearlyAmounts((unsub[3] + percentSub*principal), monthly);
+
+	total = unsub.concat(total);
+
+	return total;
+}
+
 // function recursem(school)	{
 	// var schoolinfo = Parse.Object.extend("SchoolInfo")
 	// var query = new Parse.Query(schoolinfo);
