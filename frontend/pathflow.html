@@ -6,7 +6,7 @@
             <div class="input-group-addon"><span class="glyphicon glyphicon-book"></span></div>
             <input class="input-lg form-control" type="text" ng-model="collegesearch" placeholder="Enter a college name here">
             <ul class="list-unstyled">
-                <li ng-repeat="college in colleges.results | filter:collegesearch"><a ng-click="universityClick(college)" >{{ college.University }}</a></li>
+                <li ng-repeat="college in colleges.results | filter:collegesearch"><a ng-click="universityClick(college.collegeId)" >{{ college.University }}</a></li>
             </ul>
         </div>
         <br/>
@@ -18,12 +18,13 @@
     <div class="col-md-6">
         <h2>Choose your major:</h2>
         <ul>
-            <li ng-repeat="major in majors.results"><a ng-click="majorClick(major)">{{ major.Major }}</a> </li>
+            <li ng-repeat="major in majors.results"><a ng-click="majorClick(major.objectId)">{{ major.Major }}</a> </li>
         </ul>
     </div>
     <div class="col-md-6" ng-show="majorSelected">
         <h3>See it in action</h3>
-        <p>Your chosen combination will, on average, give you the following financial status:</p>
+        <p>Your chosen combination will, on average, give you the following financial status: </p>
+        <p ng-repeat="college in colleges.results | filter:myCollege">{{ college.Total }}</p>
         <!-- put the financial information here -->
         <a class="btn btn-success btn-lg" href="#/dashboard">Go to my dashboard</a>
     </div>
