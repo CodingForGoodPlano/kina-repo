@@ -29,29 +29,44 @@ angular.module('app', ['ngRoute'])
 
 }])
 .controller('DashboardCtrl', ['$scope', function($scope) {
-  var chart = c3.generate({
+  $scope.subsidizedPerc = 50;
+  $scope.showAddOpt = false;
+  $scope.opts = ['loans', 'college', 'car'];
+
+
+  $scope.chart = c3.generate({
     bindto: '#dashboard_chart',
     data: {
       x: 'x',
       columns: [
         ['x', '2014', '2015', '2016', '2017', '2018', '2019'],
-        ['data1', 30, 200, 100, 400, 150, 250],
-        ['data2', 50, 20, 10, 40, 15, 25]
-      ],
-      axes: {
-        data2: 'y2'
-      }
+        ['data1', 20, 200, 100, 400, 150, 250],
+        ['data2', 50, 20, 10, 40, 15, 25],
+        ['data3', 50]
+      ]
     },
     axis: {
       x: {
         show: true
-      },
-      y2: {
-        show: true
       }
     }
   });
+
+  $scope.$watch('subsidizedPerc', function() {
+    $scope.chart.load({
+      columns: [
+        ['data3', $scope.subsidizedPerc, $scope.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
+      ]
+    });
+  }, true);
+
+  $scope.showHideAddOpt = function() {
+    if ($scope.showAddOpt) {
+      $scope.showAddOpt = '';
+    }
+    $scope.showAddOpt = !$scope.showAddOpt;
+  }
 }])
 .controller('CollegeFlowCtrl', ['$scope', function($scope) {
 
-	}]);
+}]);

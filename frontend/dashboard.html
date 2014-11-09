@@ -1,3 +1,33 @@
+<!-- <div class="row" ng-controller="DashboardCtrl as ctrl"> -->
 <div class="row">
   <div id="dashboard_chart"></div>
 </div>
+<!-- 
+<a ng-click="showHideAddOpt()"><button class="btn btn-lg btn-primary pull-left">Add</button></a>
+ -->
+<!-- <div class="row" ng-show="showAddOpt" ng-hide="!showAddOpt"> -->
+<div class="row">
+  <select ng-model="addOpt" ng-options="opt for opt in opts">
+    <option value="">-- choose option --</option>
+  </select>
+</div>
+
+<span ng-switch on="addOpt">
+  <!-- <div class="row ng-hide" ng-show="addOpt=='hello'"></div>
+
+  <div class="row" ng-show="addOpt=='loan'">
+  Subsidized <input type="range" ng-model="subsidizedPerc" min="0" max="100", step="1"> Unsubsidized
+  <input type="text" ng-model="subsidizedPerc">
+  </div>  -->
+
+  <div class="row" ng-switch-when="loans">
+Subsidized <input type="range" ng-model="subsidizedPerc" min="0" max="100", step="1"> Unsubsidized
+  <input type="text" ng-model="subsidizedPerc">
+  </div>
+
+  <div class="row" ng-switch-when="car">
+  </div>
+
+  <div class="row" ng-switch-when="college">
+  </div>
+</span>
