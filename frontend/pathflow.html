@@ -2,13 +2,16 @@
     <div class="col-12-md">
         <h1>Start a new path</h1>
         <p>Start off by choosing somewhere you want to go.</p>
-        <div class="input-group">
+        <div class="input-group input-group-lg">
             <div class="input-group-addon"><span class="glyphicon glyphicon-book"></span></div>
-            <input class="input-lg" type="text" placeholder="Enter a college name here">
+            <input class="input-lg form-control" type="text" placeholder="Enter a college name here">
         </div>
+        <br/>
+        <br />
+        <button class="btn-lg btn-default">Go</button>
     </div>
 </div>
-<div class="row">
+<div class="row" ng-show="collegeProvided">
     <div class="col-md-6">
         <h2>Choose your major:</h2>
         <ul>
