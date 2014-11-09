@@ -70,5 +70,10 @@ angular.module('app', ['ngRoute'])
   }
 }])
 .controller('CollegeFlowCtrl', ['$scope', function($scope) {
+}])
 
+.controller('PathFlowCtrl', ['$scope','Major', 'College', function($scope, Major, College) {
+      $scope.majors = Major.query();
+      $scope.orderProp = 'Total';
+      $scope.colleges = College.query();
 }]);
