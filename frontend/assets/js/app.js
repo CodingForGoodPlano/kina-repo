@@ -36,12 +36,13 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     subsidizedPerc: 50
   }
   $scope.showAddOpt = false;
-  $scope.opts = ['loans', 'car'];
+  $scope.opts = ['loans', 'car', 'major'];
   $scope.carYears = [];
   $scope.carPrices = [5000, 10000, 15000, 20000, 30000, 50000, 70000, 100000];
   for (var i = 2014; i < 2030; i++) {
     $scope.carYears.push(i);
   }
+  $scope.majors=['Computer Science', 'Accounting'];
 
 
   $scope.chart = c3.generate({
@@ -53,10 +54,16 @@ angular.module('app', ['ngRoute', 'frontendServices'])
        // ['data1', 80000 200, 100, 400, 150, 250],
        // ['data2', 50, 20, 10, 40, 15, 25],
        // ['data3', 50]
-       ]
+       ],
+       axes: {
+        salary: 'y2'
+       }
      },
      axis: {
       x: {
+        show: true
+      },
+      y2: {
         show: true
       }
     }

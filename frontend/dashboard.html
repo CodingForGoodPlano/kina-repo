@@ -43,8 +43,16 @@
       </div>
     </div>
 
+    <div ng-switch-when="major" class="well wells">
+      <div class="row">
+        <select ng-model="opt.major" ng-options="major for major in majors">
+          <option value="">-- choose major --</option>  
+        </select>
+      </div>
+    </div>
+
   </div>
   </div>
 
-  <div class="col-md-2 pull-right"><a href="#/pathflow"><button type="submit" class="btn btn-primary pull-right">Change major</button></div>
+  <div class="col-md-2 pull-right"><a href="#/pathflow"><button type="submit" class="btn btn-primary pull-right">Change School</button></div>
 </div>
