@@ -12,7 +12,11 @@
 }
 
 .jumbotron {
-    margin-top: 60px;
     padding-top: 150px;
     padding-bottom: 150px;
+}
+
+.vertSpace {
+    margin: 0;
+    height: 30px;
 }
