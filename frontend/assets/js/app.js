@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ngRoute'])
+angular.module('app', ['ngRoute', 'frontendServices'])
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/main', {
 		templateUrl: 'main.html',
@@ -19,7 +19,7 @@ angular.module('app', ['ngRoute'])
 			controller: 'PathFlowCtrl'
 		})
     .when('/about', {
-      templateUrl: 'about.html',
+      templateUrl: 'about.html'
     })
 	.otherwise({
 		redirectTo: '/main'
@@ -70,6 +70,7 @@ angular.module('app', ['ngRoute'])
     $scope.showAddOpt = !$scope.showAddOpt;
   }
 }])
-.controller('PathFlowCtrl', ['$scope', function($scope) {
-
+.controller('PathFlowCtrl', ['$scope','College', function($scope, College) {
+      $scope.colleges = College.query();
+      $scope.orderProp = 'Total';
 }]);

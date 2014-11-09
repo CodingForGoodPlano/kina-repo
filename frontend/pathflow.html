@@ -11,13 +11,11 @@
         <button class="btn-lg btn-default">Go</button>
     </div>
 </div>
-<div class="row" ng-show="collegeProvided">
+<div class="row">
     <div class="col-md-6">
         <h2>Choose your major:</h2>
         <ul>
-            <li>Stupid major</li>
-            <li>Stupider major</li>
-            <li>Even dumber! Why would you pick this?</li>
+            <li ng-repeat="college in colleges">{{ college.University }}</li>
         </ul>
     </div>
     <div class="col-md-6">
