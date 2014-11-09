@@ -130,7 +130,6 @@ angular.module('app', ['ngRoute', 'frontendServices'])
   });
 
   $scope.$watch('opt.carYear', function() {
-    testMe();
     console.log('caryear');
 
     var yearArr = new Array();
