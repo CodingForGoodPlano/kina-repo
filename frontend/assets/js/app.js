@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ngRoute'])
+angular.module('app', ['ngRoute', 'frontendServices'])
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/main', {
 		templateUrl: 'main.html',
