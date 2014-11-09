@@ -36,7 +36,7 @@ angular.module('app', ['ngRoute', 'frontendServices'])
     subsidizedPerc: 50
   }
   $scope.showAddOpt = false;
-  $scope.opts = ['loans', 'college', 'car'];
+  $scope.opts = ['loans', 'car'];
   $scope.carYears = [];
   $scope.carPrices = [5000, 10000, 15000, 20000, 30000, 50000, 70000, 100000];
   for (var i = 2014; i < 2030; i++) {
