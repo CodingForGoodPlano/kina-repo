@@ -274,7 +274,7 @@ angular.module('app', ['ngRoute', 'frontendServices'])
       var returnArr = new Array();
       var yearArr = new Array();
       yearArr.push('x');
-      returnArr.push('data2');
+      returnArr.push('debt');
       // console.log(totalArr);
       for(var i = 0; i < totalArr.length; i ++)  {
           yearArr.push(2014+i);
