@@ -42,9 +42,9 @@ angular.module('app', ['ngRoute'])
       x: 'x',
       columns: [
         ['x', '2014', '2015', '2016', '2017', '2018', '2019'],
-        ['data1', 20, 200, 100, 400, 150, 250],
-        ['data2', 50, 20, 10, 40, 15, 25],
-        ['data3', 50]
+       // ['data1', 80000 200, 100, 400, 150, 250],
+       // ['data2', 50, 20, 10, 40, 15, 25],
+       // ['data3', 50]
       ]
     },
     axis: {
@@ -55,9 +55,22 @@ angular.module('app', ['ngRoute'])
   });
 
   $scope.$watch('opt.subsidizedPerc', function() {
+    var totalArr = calcTotal("UTA", $scope.opt.subsidizedPerc/100, 800);
+    var returnArr = new Array();
+    var yearArr = new Array();
+    yearArr.push('x');
+    returnArr.push('data2');
+   // console.log(totalArr);
+    for(var i = 0; i < totalArr.length; i ++)  {
+      yearArr.push(2014+i);
+      returnArr.push(totalArr[i]);
+    }
+    console.log(returnArr);
     $scope.chart.load({
       columns: [
-        ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
+      yearArr,
+        returnArr,
+      //  ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
       ]
     });
   }, true);
