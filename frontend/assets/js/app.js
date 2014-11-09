@@ -14,10 +14,13 @@ angular.module('app', ['ngRoute'])
     templateUrl: 'dashboard.html',
     controller: 'DashboardCtrl'
   })
-		.when('/college-flow', {
-			templateUrl: 'college-flow.html',
-			controller: 'CollegeFlowCtrl'
+		.when('/pathflow', {
+			templateUrl: 'pathflow.html',
+			controller: 'PathFlowCtrl'
 		})
+    .when('/about', {
+      templateUrl: 'about.html',
+    })
 	.otherwise({
 		redirectTo: '/main'
 	});
@@ -67,6 +70,6 @@ angular.module('app', ['ngRoute'])
     $scope.showAddOpt = !$scope.showAddOpt;
   }
 }])
-.controller('CollegeFlowCtrl', ['$scope', function($scope) {
+.controller('PathFlowCtrl', ['$scope', function($scope) {
 
 }]);
