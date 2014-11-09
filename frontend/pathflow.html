@@ -21,10 +21,10 @@
             <li ng-repeat="major in majors.results"><a ng-click="majorClick(major)">{{ major.Major }}</a> </li>
         </ul>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" ng-show="majorSelected">
         <h3>See it in action</h3>
         <p>Your chosen combination will, on average, give you the following financial status:</p>
         <!-- put the financial information here -->
-        <a class="btn btn-success btn-lg" href=#/dashboard">Put it on my dashboard</a>
+        <a class="btn btn-success btn-lg" href="#/dashboard">Go to my dashboard</a>
     </div>
 </div>
