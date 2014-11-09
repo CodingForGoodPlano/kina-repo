@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <!-- Bootstrap CSS -->
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- BootstrapValidator CSS -->
+  <link rel="stylesheet" href="../assets/css/bootstrapValidator.min.css"/>
+
+  <!-- jQuery and Bootstrap JS -->
+  <script type="text/javascript" src="../assets/js/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+
+  <!-- BootstrapValidator JS -->
+  <script type="text/javascript" src="../assets/js/bootstrapValidator.min.js"></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="page-header">
+          <h2>Sign up</h2>
+        </div>
+
+        <!-- To use feedback icons, ensure that you use Bootstrap v3.1.0 or later -->
+        <form id="registrationForm" method="post" class="form-horizontal"
+        data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+        data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+        data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Email address</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" name="email"
+            data-bv-notempty="true"
+            data-bv-notempty-message="The email address is required and cannot be empty"
+
+            data-bv-emailaddress="true"
+            data-bv-emailaddress-message="The email address is not a valid" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Password</label>
+          <div class="col-sm-5">
+            <input type="password" class="form-control" name="password"
+            data-bv-notempty="true"
+            data-bv-notempty-message="The password is required and cannot be empty"
+
+            data-bv-stringlength="true"
+            data-bv-stringlength-min="6"
+            data-bv-stringlength-message="The password must have at least 6 characters"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Retype password</label>
+          <div class="col-sm-5">
+            <input type="password" class="form-control" name="confirmPassword"
+            data-bv-identical="true"
+            data-bv-identical-field="password"
+            data-bv-identical-message="The password and its confirm are not the same" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Date of birth</label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" name="birthday" placeholder="YYYY/MM/DD"
+            data-bv-notempty="true"
+            data-bv-notempty-message="The date of birth is required"
+
+            data-bv-date="true"
+            data-bv-date-format="YYYY/MM/DD"
+            data-bv-date-message="The date of birth is not valid" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-9 col-sm-offset-3">
+            <!-- Do NOT use name="submit" or id="submit" 
+            for the Submit button cuz bad things happen-->
+            <button type="submit" class="btn btn-default">Sign up</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#registrationForm').bootstrapValidator();
+  });
+</script>
+
+</body>
+</html>
