@@ -108,16 +108,56 @@ angular.module('app', ['ngRoute', 'frontendServices'])
   $scope.colleges = College.query();
   $scope.collegeSelected = false;
   $scope.majorSelected = false;
+    var total = 0;
 
   $scope.universityClick = function(college){
     $scope.collegeSelected = true;
     $scope.myCollege = college;
+      total = $scope.myCollege.Total;
+      $scope.chart = c3.generate({
+          bindto: '#college-major-chart',
+          data: {
+              x: 'x',
+              columns: [
+                  ['x', '2014', '2015', '2016', '2017', '2018', '2019'],
+                  // ['data1', 80000 200, 100, 400, 150, 250],
+                  // ['data2', 50, 20, 10, 40, 15, 25],
+                  // ['data3', 50]
+              ]
+          },
+          axis: {
+              x: {
+                  show: true
+              }
+          }
+      });
+
+      var totalArr = calcTotalParse(total,.045, 800);
+      var returnArr = new Array();
+      var yearArr = new Array();
+      yearArr.push('x');
+      returnArr.push('data2');
+      // console.log(totalArr);
+      for(var i = 0; i < totalArr.length; i ++)  {
+          yearArr.push(2014+i);
+          returnArr.push(totalArr[i].toFixed(2));
+      }
+      console.log(returnArr);
+      $scope.chart.load({
+          columns: [
+              yearArr,
+              returnArr,
+              //  ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
+          ]
+      });
   };
 
-  $scope.majorClick = function(majorId){
+  $scope.majorClick = function(major){
     $scope.majorSelected = true;
-    $scope.myMajor = majorId;
+    $scope.myMajor = major;
   };
+
+
 
 
 }]);
