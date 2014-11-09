@@ -2,25 +2,74 @@
   <!-- <div class="col-md-offset-3 col-md-3 well">
     <h2>Login</h2>
     <div clas="vertSpace"></div> -->
-  <div class="col-sm-offset-1 col-sm-5 col-md-offset-2 col-md-4">
+  <div class="col-sm-offset-1 col-sm-5 col-md-offset-2 col-md-4" id="registerCol">
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">Sign In</h3>
       </div>
       <div class="panel-body">
-        <form>
+        <form class="form-signin" role="form">
+          <input type="email" class="form-control" placeholder="Email Address" required autofocus>
+          <div class="spacer15"></div>
+          <input type="password" class="form-control" placeholder="Password" required>
+          <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me">Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary pull-right" type="submit">Sign In</button>
         </form>
       </div>
     </div>
   </div>
-  <div class="col-sm-5 col-md-4">
+  <div class="col-sm-5 col-md-4" id="registerColRight">
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">Register</h3>
       </div>
       <div class="panel-body">
-        <form>
-        </form>
+        <form id="registrationForm" method="post" class="form-horizontal"
+        data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+        data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+        data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+
+            <input type="text" placeholder="Email Address" class="form-control" name="email"
+            data-bv-notempty="true"
+            data-bv-notempty-message="The email address is required and cannot be empty"
+
+            data-bv-emailaddress="true"
+            data-bv-emailaddress-message="The email address is not a valid" />
+          <div class="spacer15"></div>
+
+            <input type="password" placeholder="Password" class="form-control" name="password"
+            data-bv-notempty="true"
+            data-bv-notempty-message="The password is required and cannot be empty"
+
+            data-bv-stringlength="true"
+            data-bv-stringlength-min="6"
+            data-bv-stringlength-message="The password must have at least 6 characters"
+            >
+          <div class="spacer15"></div>
+
+            <input type="password" placeholder="Retype Password" class="form-control" name="confirmPassword"
+            data-bv-identical="true"
+            data-bv-identical-field="password"
+            data-bv-identical-message="The password and its confirm are not the same" />
+          <div class="spacer15"></div>
+
+            <input type="text" class="form-control" name="birthday" placeholder="YYYY/MM/DD"
+            data-bv-notempty="true"
+            data-bv-notempty-message="The date of birth is required"
+
+            data-bv-date="true"
+            data-bv-date-format="YYYY/MM/DD"
+            data-bv-date-message="The date of birth is not valid" />
+          <div class="spacer15"></div>
+
+            <!-- Do NOT use name="submit" or id="submit" 
+            for the Submit button cuz bad things happen-->
+            <button type="submit" class="btn btn-lg btn-primary pull-right">Sign up</button>
+      </form>
       </div>
     </div>
   </div>
