@@ -89,4 +89,17 @@ angular.module('app', ['ngRoute'])
       $scope.majors = Major.query();
       $scope.orderProp = 'Total';
       $scope.colleges = College.query();
+      $scope.collegeSelected = false;
+      $scope.majorSelected = false;
+      $scope.myCollege = 
+
+      $scope.universityClick = function(College){
+        $scope.collegeSelected = true;
+        $scope.myCollege = College;
+      }
+
+      $scope.majorClick = function(Major){
+        $scope.majorSelected = true;
+        $scope.myMajor = Major;
+      }
 }]);
