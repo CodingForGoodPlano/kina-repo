@@ -64,6 +64,8 @@ function calcTotal(school, percentSub, monthly)	{
 	var unsub = calcUnsub((principal * (1-percentSub)));
 	var total = yearlyAmounts((unsub[3] + percentSub*principal), monthly);
 
+	total = unsub.concat(total);
+
 	return total;
 }
 
