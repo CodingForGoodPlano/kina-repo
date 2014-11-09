@@ -91,7 +91,6 @@ angular.module('app', ['ngRoute'])
       $scope.colleges = College.query();
       $scope.collegeSelected = false;
       $scope.majorSelected = false;
-      $scope.myCollege = 
 
       $scope.universityClick = function(College){
         $scope.collegeSelected = true;
