@@ -58,24 +58,26 @@ angular.module('app', ['ngRoute', 'frontendServices'])
   });
 
   $scope.$watch('opt.subsidizedPerc', function() {
-    var totalArr = calcTotal("UTA", $scope.opt.subsidizedPerc/100, 800);
-    var returnArr = new Array();
-    var yearArr = new Array();
-    yearArr.push('x');
-    returnArr.push('data2');
-   // console.log(totalArr);
-   for(var i = 0; i < totalArr.length; i ++)  {
-    yearArr.push(2014+i);
-    returnArr.push(totalArr[i].toFixed(2));
+    if($scope.opt.subsidizedPerc <= 100 && $scope.opt.subsidizedPerc>=0)  {
+      var totalArr = calcTotal("UTA", $scope.opt.subsidizedPerc/100, 800);
+      var returnArr = new Array();
+      var yearArr = new Array();
+      yearArr.push('x');
+      returnArr.push('data2');
+     // console.log(totalArr);
+     for(var i = 0; i < totalArr.length; i ++)  {
+      yearArr.push(2014+i);
+      returnArr.push(totalArr[i].toFixed(2));
+    }
+    console.log(returnArr);
+    $scope.chart.load({
+      columns: [
+      yearArr,
+      returnArr,
+        //  ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
+        ]
+      });
   }
-  console.log(returnArr);
-  $scope.chart.load({
-    columns: [
-    yearArr,
-    returnArr,
-      //  ['data3', $scope.opt.subsidizedPerc, $scope.opt.subsidizedPerc * 2, $scope.subsidizedPerc * -1]
-      ]
-    });
 }, true);
 
   $scope.showHideAddOpt = function() {
